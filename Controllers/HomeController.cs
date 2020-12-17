@@ -12,6 +12,7 @@ namespace BTL.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        //Khai báo và khởi tạo đối tượng cho các lớp
         SanPhamModel dbsp = new SanPhamModel();
         LoaiSPModel dblsp = new LoaiSPModel();
         DatHangModel dbdh = new DatHangModel();
