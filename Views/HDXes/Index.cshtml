@@ -1,0 +1,150 @@
+﻿@model IEnumerable<BTL.Models.HDX>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yuki Shop</title>
+
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/css/datepicker3.css" rel="stylesheet">
+    <link href="~/Assets/css/styles.css" rel="stylesheet">
+    <script src="~/Assets/js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script src="~/Assets/js/jquery.js" type="text/javascript"></script>
+
+    <!--Icons-->
+    <script src="~/Assets/js/lumino.glyphs.js"></script>
+    <script src="~/Assets/js/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:64122/Admin/Index">Xin chào: Yuki</a>
+                <a class="navbar-brand pull-right" id="logout" href="#">Hòa Yuki</a>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </nav>	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <!-- <form role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Tìm kiếm ...">
+            </div>
+        </form> -->
+                <ul class="nav menu">
+                    <li class="active"><a href="http://localhost:64122/Admin/Index"><svg class="glyph stroked home"><use xlink:href="#stroked-home" /></svg> Trang chủ</a></li>
+                    <li><a href="http://localhost:64122/LoaiSPs/Index"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Loại sản phẩm</a></li>
+                    <li><a href="http://localhost:64122/SanPhams/Index"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Sản phẩm</a></li>
+                    <li><a href="http://localhost:64122/KhachHangs/Index"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user" /></svg> Khách hàng</a></li>
+                    <li><a href="http://localhost:64122/HDXes"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Hóa đơn xuất</a></li>
+                    @*<li><a href="http://localhost/webshop/admin/transaction"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Đơn đặt hàng</a></li>
+        <li><a href="http://localhost/webshop/admin/user"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user" /></svg> Khách hàng</a></li>
+        <li><a href="http://localhost/webshop/admin/admin"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user" /></svg> Nhân viên</a></li>*@
+
+                    <li role="presentation" class="divider"></li>
+
+                </ul>
+        <div class="attribution">Template by <a href="http://www.medialoot.com/item/lumino-admin-bootstrap-template/">Yuki</a><br /><a href="http://www.glyphs.co" style="color: #333;">Icons by Yuki</a></div>
+    </div><!--/.sidebar-->
+    <div id="sidebar-collapse" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+        </div>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="http://localhost:64122/Admin/Index"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+                <li class="active">Hóa đơn xuất</li>
+            </ol>
+        </div><!--row-->
+        <h3><span id="message"></span></h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="" method="post">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div id="sidebar-collapse" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                            <div class="row">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    Quản lý hóa đơn xuất
+                                </div>
+                                <div>
+                                    <p>
+                                        @Html.ActionLink("Tạo mới", "Create")
+                                    </p>
+                                </div>
+                            </div><!--/.row-->                           
+                            <div>                              
+                                <table class="table table-bordered table-striped" id="example" style="width:100%">
+                                    <tr>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.MaKH)*@
+                                            <label>Mã khách hàng</label>
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.MaSP)*@
+                                            <label>Mã sản phẩm</label>
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.SL)*@
+                                            <label>Số lượng</label>
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.NgayBan)*@
+                                            <label>Ngày bán</label>
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.Tongtien)*@
+                                            <label>Tổng tiền</label>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MaKH)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MaSP)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SL)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NgayBan)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Tongtien)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Sửa", "Edit", new { id = item.MaHD }) |
+                                                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHD }) |
+                                                @Html.ActionLink("Xóa", "Delete", new { id = item.MaHD })
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+        </div>
+        </body>
